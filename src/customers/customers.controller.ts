@@ -1,7 +1,6 @@
 import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
 import { CustomersService } from './customers.service';
 import { Customer } from './customers.entity';
-import { CreateCustomerDto } from './create-customer.dto';
 
 @Controller('customers')
 export class CustomersController {
@@ -18,8 +17,8 @@ export class CustomersController {
   }
 
   @Post()
-  create(@Body() createCustomerDto: CreateCustomerDto): Promise<Customer> {
-    return this.customersService.create(createCustomerDto);
+  create(@Body() customer: Customer): Promise<Customer> {
+    return this.customersService.create(customer);
   }
 
   @Delete(':id')

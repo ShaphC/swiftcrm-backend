@@ -1,7 +1,10 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import * as dotenv from 'dotenv';
 import { CustomersModule } from './customers/customers.module';
 import { Customer } from './customers/customers.entity';
+
+dotenv.config();
 
 @Module({
   imports: [
@@ -14,6 +17,7 @@ import { Customer } from './customers/customers.entity';
       database: process.env.DATABASE_NAME,
       entities: [Customer],
       synchronize: true,
+      logging: true,
     }),
     CustomersModule,
   ],
